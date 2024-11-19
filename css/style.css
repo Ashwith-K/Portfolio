@@ -313,6 +313,28 @@ Header Section
 }
 
 
+.floating-home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.floating-home-button .btn {
+    background-color: var(--main-color);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-home-button .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
 
 .header .nav-toggler.hide {
 	opacity: 0;
