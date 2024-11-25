@@ -9,13 +9,13 @@ Variables
 ----------------------------*/
 
 :root {
-	--main-color: #38131f;
-	--blue: #636370;
+	--main-color: #ff0000;
+	--blue: #ff0400;
 	--blue-dark: #18293c;
-	--orange: #644407;
-	--green-yellow: #d7ee07;
-	--pink-light: #efa2b4;
-	--cyan-light: #e6a10f;
+	--orange: #ffa500;
+	--green-yellow: #cddc39;
+	--pink-light: #83defc;
+	--cyan-light: #fcffaa;
 	--white: #ffffff;
 	--white-alpha-40: rgba(255, 255, 255, 0.40);
 	--white-alpha-25: rgba(255, 255, 255, 0.25);
@@ -95,7 +95,8 @@ ul {
 }
 
 section {
-	
+	background-color: var(--white-alpha-25);
+	border: 1px solid var(--white-alpha-40);
 	min-height: calc(100vh - 70px);
 	border-radius: 30px;
 	backdrop-filter: var(--webkit-backdrop-filter-blur);
@@ -206,13 +207,135 @@ button {
 	transition: color 0.3s ease;
 }
 
-
+.btn::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 0%;
+	background-color: var(--main-color);
+	z-index: -1;
+	transition: width 0.3s ease;
+}
 
 .btn:hover::before {
 	width: 100%;
 }
 
+.btn:hover {
+	color: var(--white);
+}
 
+
+/* ------------
+Animation Section
+-------------- */
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes zoomInOut {
+	0%,
+	100% {
+		transform: scale(0.5);
+	}
+	50% {
+		transform: scale(1);
+	}
+}
+
+@keyframes bounceTop {
+	0%,
+	100% {
+		transform: translateY(-50px);
+	}
+	50% {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+/* ------------
+BG Section
+-------------- */
+
+.bg-circles {
+	position: fixed;
+	top: 0;
+	height: 100%;
+	max-width: 1200px;
+	width: calc(100% - 30px);
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.bg-circles div {
+	position: absolute;
+	border-radius: 50%;
+}
+
+.bg-circles .circle-1 {
+	height: 60px;
+	width: 60px;
+	background-color: var(--blue);
+	left: 5%;
+	top: 10%;
+	opacity: 0.3;
+	animation: zoomInOut 8s linear infinite;
+}
+
+.bg-circles .circle-2 {
+	height: 80px;
+	width: 80px;
+	background-color: var(--main-color);
+	left: 30%;
+	top: 50%;
+	opacity: 0.4;
+	animation: bounceTop 5s ease-in-out infinite;
+}
+
+.bg-circles .circle-3 {
+	height: 120px;
+	width: 120px;
+	background-color: var(--white);
+	right: -60px;
+	top: 40%;
+	opacity: 0.6;
+}
+
+.bg-circles .circle-4 {
+	height: 50px;
+	width: 50px;
+	background-color: var(--orange);
+	top: 80%;
+	left: -30px;
+	opacity: 0.6;
+}
 
 
 /* ------------
@@ -312,7 +435,21 @@ Header Section
 	margin: auto;
 }
 
-
+.header .nav-toggler {
+	width: 50px;
+	height: 50px;
+	border: none;
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: var(--white-alpha-25);
+	border: 1px solid var(--white-alpha-40);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 15px;
+	z-index: 1;
+	transition: opacity 0.5s ease-in-out;
+}
 
 .header .nav-toggler.hide {
 	opacity: 0;
